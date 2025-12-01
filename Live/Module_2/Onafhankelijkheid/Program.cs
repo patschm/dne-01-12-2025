@@ -15,11 +15,13 @@ internal class Program
     private static void HipEnModern()
     {
         var factory = new DefaultServiceProviderFactory();
+        
         var servics = new ServiceCollection();
        servics.AddKeyedScoped<ICounter, Counter>("goed");
         servics.AddKeyedScoped<ICounter, MinCounter>("fout");
         servics.AddTransient<CounterContainer, CounterContainer>();
         servics.AddTransient<MinCounterContainer>();
+        
 
         var builder = factory.CreateBuilder(servics);
         var provider = builder.BuildServiceProvider();
