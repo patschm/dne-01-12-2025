@@ -1,0 +1,9 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".editorconfig" />
+  </Folder>
+  <Project Path="AllInOne/AllInOne.csproj" />
+  <Project Path="Infra/Infra.csproj" />
+  <Project Path="LumberJack/LumberJack.csproj" />
+  <Project Path="Onafhankelijkheid/Onafhankelijkheid.csproj" />
+</Solution>

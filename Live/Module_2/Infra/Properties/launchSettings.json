@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Infra": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "APP_SET": "appsettings.json"
+      }
+    }
+  }
+}
