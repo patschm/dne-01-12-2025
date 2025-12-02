@@ -19,30 +19,37 @@ public class Program
         //BasicClientAsync();
         //DIClient();
         //StrongClient();
-        //PostClient();
-       AuthClient();
+        PostClient();
+       //AuthClient();
         Console.ReadLine();
     }
 
     static HttpClient client = new HttpClient();
+
     private static async Task BasicClientAsync()
     {
         var handler = new SocketsHttpHandler();
         handler.MaxConnectionsPerServer = 1;
         handler.PooledConnectionLifetime = TimeSpan.FromMinutes(1);
-        var client = new HttpClient(handler);
+        // var client = new HttpClient();
         //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("bearer", "kowhdfhwhfe");
+        //client.BaseAddress = new Uri("https://localhost:8001/");
+
+        var client = new HttpClient(handler);
         client.BaseAddress = new Uri("https://localhost:8001/");
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 3000; i++) 
+        {
             var response = await client.GetAsync("WeatherForecast");
             if (response.IsSuccessStatusCode)
             {
                 Console.WriteLine(response.Content.Headers.ContentType);
                 var data = await response.Content.ReadAsStringAsync();
                 Console.Write(data);
+                Console.WriteLine();
             }
-            Task.Delay(10_000).Wait();
+            Console.WriteLine(new string('=', 80));
+            // Task.Delay(10_000).Wait();
         }
     }
 
@@ -107,10 +114,10 @@ public class Program
 
         var item = new WeatherForecast { Date = DateTime.Now, Summary = "Mottig", TemperatureC = 31 };
         var content = new StringContent(JsonConvert.SerializeObject(item));
-         content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+        content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
         var response = client.PostAsync("WeatherForecast", content).Result;
 
-
+        Console.WriteLine(response.StatusCode);
         if (response.IsSuccessStatusCode)
         {
             Console.WriteLine(response.Headers.Location);

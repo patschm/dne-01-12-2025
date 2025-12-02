@@ -18,7 +18,7 @@ namespace WebApi.Controllers
             _logger = logger;
         }
 
-        public IActionResult Post([FromBody]string data)
+        public IActionResult Post([FromBody]WeatherForecast data)
         {
             return Created();
         }
