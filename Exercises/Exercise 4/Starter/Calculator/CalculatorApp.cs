@@ -9,13 +9,14 @@ public partial class CalculatorApp : Form
         InitializeComponent();
     }
 
-    private async void button1_Click(object sender, EventArgs e)
+    private void button1_Click(object sender, EventArgs e)
     {
         if (int.TryParse(txtA.Text, out int a) && int.TryParse(txtB.Text, out int b))
         {
-
-            int result = LongAdd(a, b);
-            UpdateAnswer(result);
+            Task.Run(() => LongAdd(a, b))
+                .ContinueWith(pt=>_main.Send(UpdateAnswer, pt.Result));
+            //int result = LongAdd(a, b);
+            //UpdateAnswer(result);
         }
     }
 
