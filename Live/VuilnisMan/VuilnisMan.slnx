@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Stringen/Stringen.csproj" />
+  <Project Path="VuilnisMan/VuilnisMan.csproj" />
+</Solution>
