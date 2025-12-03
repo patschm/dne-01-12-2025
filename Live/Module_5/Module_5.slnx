@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="AndereBieb/AndereBieb.csproj" />
+  <Project Path="DeBieb/DeBieb.csproj" />
+  <Project Path="TheClient/TheClient.csproj" />
+</Solution>
