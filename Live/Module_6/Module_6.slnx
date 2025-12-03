@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="Confidentiality/Confidentiality.csproj" />
+  <Project Path="Integrity/Integrity.csproj" />
+</Solution>
